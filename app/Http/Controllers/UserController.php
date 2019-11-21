@@ -59,16 +59,22 @@ class UserController extends Controller
     }
     public function userLoginCheck(Request $request){
         $appUser = PartyCenterBookingUser::where('email_address', $request->email_address)->first();
-//        return $appUser;
+        //        return $appUser;
 
-        if (password_verify($request->password, $appUser->password)) {
-            Session::put('userId',$appUser->id);
-            Session::put('userName',$appUser->first_name.' '.$appUser->last_name);
+        if (!empty($appUser)) {
 
-            return redirect('/');
+            if (password_verify($request->password, $appUser->password)) {
+                Session::put('userId', $appUser->id);
+                Session::put('userName', $appUser->first_name . ' ' . $appUser->last_name);
+
+                return redirect('/');
+            } else {
+                return redirect('/user/login')->with('message', 'Please your check Email or Password');
+            }
         } else {
             return redirect('/user/login')->with('message', 'Please your check Email or Password');
         }
+
 
     }
 

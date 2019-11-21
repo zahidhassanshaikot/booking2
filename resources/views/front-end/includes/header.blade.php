@@ -19,7 +19,7 @@
                                 <ul class="dropdown-menu dropdown-user">
                                     <li><a href="{{ route('app-user-profile') }}"><i class="fa fa-user fa-fw"></i> User Profile</a>
                                     </li>
-                                    <li class="divider"></li>
+                                    {{-- <li class="divider"></li> --}}
                                     <li><a href="{{ route('booking-request-status-by-user') }}">Your Booking status</a></li>
                                     <li class="divider"></li>
                                     <li></i><a href="#" onclick="document.getElementById('userLogoutForm').submit();">Logout</a></li>
@@ -113,7 +113,7 @@
                     <div class="search-box">
                         <div id="sb-search" class="sb-search">
                             {{--<form>--}}
-                            {{ Form::open(['method'=>'POST', 'class'=>'form-horizontal animated wow zoomIn','data-wow-delay'=>".5s"]) }}
+                            {{ Form::open(['route'=>'search-post','method'=>'POST', 'class'=>'form-horizontal animated wow zoomIn','data-wow-delay'=>".5s"]) }}
 
                             <input class="sb-search-input" name="search" placeholder="Search by location" type="search" id="search">
                                 <input class="sb-search-submit" type="submit" value="">
